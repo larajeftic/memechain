@@ -1,0 +1,18 @@
+# credentials - never commit, never deploy
+Githubtoken.txt
+*token*.txt
+*.token
+.env
+.env.*
+*.pem
+*.key
+# node-local state (wallet private key, chain db, logs)
+data/
+__pycache__/
+*.pyc
+node_modules/
+_backups/
+*.bak
+*.bak_*
+# test artefacts
+tests/_browser_chain.json

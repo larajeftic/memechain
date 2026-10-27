@@ -1,0 +1,46 @@
+[
+ {
+  "height": 10,
+  "hash": "00003ba09bd03ed5942ae2df558ae046650b653269d64d26e36e12fb54f6468a",
+  "stamped_at": 1793070119,
+  "file": "anchors/10_00003ba09bd03ed5.ots",
+  "calendars": [
+   "https://alice.btc.calendar.opentimestamps.org",
+   "https://bob.btc.calendar.opentimestamps.org",
+   "https://finney.calendar.eternitywall.com"
+  ]
+ },
+ {
+  "height": 30,
+  "hash": "000002e651fc624473f1ec2121fd72fd1e52868b7aa699a8a61a102af3c499a2",
+  "stamped_at": 1793070146,
+  "file": "anchors/30_000002e651fc6244.ots",
+  "calendars": [
+   "https://alice.btc.calendar.opentimestamps.org",
+   "https://bob.btc.calendar.opentimestamps.org",
+   "https://finney.calendar.eternitywall.com"
+  ]
+ },
+ {
+  "height": 40,
+  "hash": "000000d9a0889e019c20ecffd666cd1a8cbe6e48fbde71d2beda8bd5ad35035d",
+  "stamped_at": 1793070256,
+  "file": "anchors/40_000000d9a0889e01.ots",
+  "calendars": [
+   "https://alice.btc.calendar.opentimestamps.org",
+   "https://bob.btc.calendar.opentimestamps.org",
+   "https://finney.calendar.eternitywall.com"
+  ]
+ },
+ {
+  "height": 50,
+  "hash": "0000001bf3868dad1d217b1b0b670ac8b63dbff915a8df24058539b7f9f25006",
+  "stamped_at": 1793070400,
+  "file": "anchors/50_0000001bf3868dad.ots",
+  "calendars": [
+   "https://alice.btc.calendar.opentimestamps.org",
+   "https://bob.btc.calendar.opentimestamps.org",
+   "https://finney.calendar.eternitywall.com"
+  ]
+ }
+]
