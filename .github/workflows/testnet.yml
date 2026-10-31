@@ -1,0 +1,48 @@
+# Public testnet bot: mines a few blocks every 20 minutes with node.py's own rules, inscribes memes from
+# testnet/pool/, stamps every 10th block into Bitcoin, and force-pushes the export to the `testnet` branch
+# (one commit, so the branch does not grow a history). The site reads chain.json from that branch.
+# Optional secret MC_BOT_KEY: hex private key of the testnet node wallet. Without it each run mines to a fresh key.
+name: testnet
+
+on:
+  schedule:
+    - cron: '7,27,47 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: testnet
+  cancel-in-progress: false
+
+jobs:
+  mine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: testnet
+          path: net
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install flask requests ecdsa pillow opentimestamps-client
+      - name: Mine
+        env:
+          MC_BOT_KEY: ${{ secrets.MC_BOT_KEY }}
+          MC_BOT_SECONDS: '300'
+          MC_BOT_BLOCKS: '8'
+        run: python tools/testnet_bot.py net
+      - name: Publish
+        working-directory: net
+        run: |
+          H=$(python -c "import json; print(json.load(open('status.json'))['height'])")
+          git config user.name "memechain-testnet-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan next
+          git add -A
+          git commit -q -m "testnet height $H"
+          git push -q -f origin next:testnet

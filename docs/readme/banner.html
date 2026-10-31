@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>memechain banner</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* Source of docs/readme/banner.png and docs/og.png: python tools/readme_assets.py */
+  html, body { margin: 0; width: 1280px; height: 640px; overflow: hidden; }
+  body { background: radial-gradient(900px 500px at 85% 40%, #1d1f45 0%, var(--night) 70%); position: relative; }
+  .copy { position: absolute; left: 72px; top: 120px; width: 600px; }
+  .copy .mark { display: flex; align-items: center; gap: 18px; }
+  .copy svg { width: 84px; height: 84px; flex: none; }
+  .copy h1 { font: 124px/1 var(--display); margin: 0; letter-spacing: .005em; }
+  .copy p { font: 600 34px/1.15 var(--sans); margin: 26px 0 0; color: var(--text); }
+  .copy small { display: block; margin-top: 18px; font: 500 20px/1.4 var(--sans); color: var(--muted); }
+  .copy .url { position: absolute; top: 400px; font: 500 18px/1 var(--mono); color: var(--pepe); }
+  .blocks { position: absolute; right: 70px; top: 0; width: 560px; height: 640px; }
+  .blocks .cube { position: absolute; --s: 190px; --d: 26px; cursor: default; }
+  .blocks .cube .lbl b { font-size: 30px; }
+  .blocks .cube .lbl span { font-size: 15px; }
+  .c1 { left: 0; top: 330px; } .c2 { left: 186px; top: 214px; } .c3 { left: 372px; top: 98px; }
+  .cap { position: absolute; left: 10px; right: 10px; top: 10px; z-index: 2; text-align: center; font: 26px/1 var(--display); text-transform: uppercase; color: #fff;
+    text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000; }
+  .ch { position: absolute; z-index: 3; }
+  .peek { width: 86px; left: 474px; top: 34px; z-index: 0; }
+  .sit { width: 96px; left: 6px; top: 252px; }
+  .doge { width: 120px; left: 330px; top: 470px; z-index: 4; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <div class="mark">
+      <svg viewBox="0 0 64 64"><path d="M32 4 58 18 32 32 6 18Z" fill="#79d85e"/><path d="M6 18 32 32v28L6 46Z" fill="#6c5cff"/><path d="M58 18 32 32v28l26-14Z" fill="#463bc4"/></svg>
+      <h1>memechain</h1>
+    </div>
+    <p>Every meme gets its own block.</p>
+    <small>A proof-of-work blockchain for memes. Mine, inscribe and trade with test tokens in your browser.</small>
+    <span class="url">larajeftic.github.io/memechain</span>
+  </div>
+  <div class="blocks">
+    <img class="ch peek" src="../img/characters/pepe-peek.png" alt="">
+    <div class="cube c1 meme"><span class="top-f"></span><span class="side-f"></span><span class="face"><img src="../img/doge.jpg" alt=""><span class="lbl"><b>#54</b><span>2 txs</span></span></span></div>
+    <div class="cube c2 meme"><span class="top-f"></span><span class="side-f"></span><span class="face"><img src="../img/pepe.jpg" alt="" style="object-position:center 20%"><span class="lbl"><b>#55</b><span>3 txs</span></span></span></div>
+    <div class="cube c3 meme"><span class="top-f"></span><span class="side-f"></span><span class="face"><img src="../img/wojak.png" alt=""><span class="cap">he bought the top</span><span class="lbl"><b>#56</b><span>2 txs</span></span></span></div>
+    <img class="ch sit" src="../img/characters/pepe-sit.png" alt="">
+    <img class="ch doge" src="../img/characters/doge.png" alt="">
+  </div>
+</body>
+</html>

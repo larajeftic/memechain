@@ -4,163 +4,171 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>memechain</title>
-<meta name="description" content="memechain: a proof-of-work blockchain for memes. Mine, inscribe, sell and buy memes with test tokens in your browser. Same rules as the Python testnet node.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2309090b'/%3E%3Crect x='7' y='12' width='18' height='8' rx='1.5' fill='%235865f2'/%3E%3C/svg%3E">
+<meta name="description" content="A small proof-of-work blockchain for memes. Mine blocks, inscribe a picture and trade it for test MEME in your browser, or watch the public testnet.">
+<meta property="og:title" content="memechain: every meme gets its own block">
+<meta property="og:description" content="A proof-of-work blockchain for memes. Mine, inscribe and trade with test tokens in your browser. Public testnet mined by GitHub Actions.">
+<meta property="og:image" content="https://larajeftic.github.io/memechain/og.png">
+<meta property="og:url" content="https://larajeftic.github.io/memechain/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0f1020">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#steps">Skip to the walkthrough</a>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.9 12.1 21 2m-3 3 3 3m-6 0 2 2"/></symbol>
-  <symbol id="i-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
-  <symbol id="i-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m21 16-5-5-9 9"/></symbol>
-  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
-  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m-6 6 6-6 6 6M4 20h16"/></symbol>
-</svg>
+<a class="skip" href="#mine">Skip to the miner</a>
 
-<header class="top"><div class="in">
-  <a class="brand" href="#"><i></i>memechain</a>
+<header class="top"><div class="wrap top-in">
+  <a class="brand" href="#" aria-label="memechain home">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 58 18 32 32 6 18Z" fill="#79d85e"/><path d="M6 18 32 32v28L6 46Z" fill="#6c5cff"/><path d="M58 18 32 32v28l26-14Z" fill="#463bc4"/><path d="M20 15.5 32 9l12 6.5L32 22Z" fill="#0f1020" opacity=".18"/></svg>
+    <span>memechain</span>
+  </a>
   <nav aria-label="Sections">
-    <a class="nav-button" href="#steps">Walkthrough</a>
-    <a class="nav-button" href="#market">Market</a>
-    <a class="nav-button" href="#explorer">Explorer</a>
-    <a class="nav-button" href="#testnet">Testnet</a>
-    <a class="nav-button" href="https://github.com/larajeftic/memechain" rel="noopener">GitHub</a>
+    <a href="#market">Market</a>
+    <a href="#mine">Mine</a>
+    <a href="#explorer">Explorer</a>
+    <a href="#node">Run a node</a>
   </nav>
-  <div class="right">
-    <span class="pill live" id="pill-chain">block <b id="cb-height">0</b></span>
-    <span class="pill mining" id="pill-mining" hidden>mining</span>
-  </div>
+  <a class="netpill" id="netpill" href="#explorer" title="Public testnet"><i></i><span id="netpill-txt">testnet</span></a>
+  <a class="gh" href="https://github.com/larajeftic/memechain" rel="noopener" aria-label="Source on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
 </div></header>
 
+<div class="tape" aria-label="Latest testnet activity"><div class="tape-in" id="tape"></div></div>
+
 <main>
-  <section class="hero">
-    <div>
-      <h1>Mine it. Inscribe it. Sell it.<br>A meme blockchain in your browser.</h1>
-      <p class="sub">Real proof of work, real signatures, test tokens with no value. Your chain lives in this browser only. Same rules as the Python testnet node.</p>
+  <section class="hero wrap">
+    <div class="hero-top">
+    <div class="hero-copy">
+      <h1>Every meme gets its own block.</h1>
+      <p class="lede">memechain is a small proof-of-work blockchain for memes. Mine blocks, inscribe a picture and trade it for test MEME, right here in your browser. The public testnet keeps growing on its own.</p>
       <div class="cta">
-        <a class="button lg" href="#steps">Start</a>
-        <a class="button lg ghost" href="#how">What is real here</a>
-        <button class="button ghost" id="reset" type="button">Reset</button>
+        <a class="btn primary lg" href="#mine">Mine your first block</a>
+        <a class="btn lg" href="#market">Browse the memes</a>
       </div>
     </div>
-    <div class="faces" aria-label="Bundled memes">
-      <div><img src="img/pepe.jpg" alt="Pepe the Frog"><span>Pepe</span></div>
-      <div><img src="img/apu.jpg" alt="Apu Apustaja"><span>Apu</span></div>
-      <div><img src="img/doge.jpg" alt="Doge"><span>Doge</span></div>
-      <div><img src="img/chad.jpg" alt="Yes Chad"><span>Chad</span></div>
-      <div><img src="img/gigachad.jpg" alt="GigaChad"><span>GigaChad</span></div>
-      <div><img src="img/wojak.png" alt="Wojak"><span>Wojak</span></div>
+    <div class="stack" id="stack" aria-label="Newest memes"></div>
     </div>
-  </section>
 
-  <section id="wallets">
-    <div class="sec-head"><h2>Wallets</h2><p>Three keys in this browser. Hot signs and spends, cold only receives, the buyer is your test counterparty.</p></div>
-    <div class="wallets">
-      <div class="wallet hot"><img src="img/pepe.jpg" alt=""><div><h3>You, hot wallet</h3><div class="amt"><span id="w-hot">0</span><small>MEME</small></div><div class="addr" id="a-hot">no key yet</div></div></div>
-      <div class="wallet cold"><div class="icon"><svg><use href="#i-lock"/></svg></div><div><h3>Your cold vault</h3><div class="amt"><span id="w-cold">0</span><small>MEME</small></div><div class="addr" id="a-cold">no key yet</div></div></div>
-      <div class="wallet"><img src="img/chad.jpg" alt=""><div><h3>Test buyer</h3><div class="amt"><span id="w-buyer">0</span><small>MEME</small></div><div class="addr" id="a-buyer">no key yet</div></div></div>
-    </div>
-  </section>
-
-  <section id="steps">
-    <div class="sec-head"><h2>Walkthrough</h2><p>One click per step. Every click signs real transactions and mines a real block.</p></div>
-    <div class="steps">
-      <div class="step" id="s1">
-        <div class="n"><svg><use href="#i-key"/></svg></div>
-        <div><h3>Create wallets</h3><div class="hint">Three secp256k1 key pairs, stored in this browser.</div></div>
-        <div class="ctl"><button class="button" id="b-wallets" type="button">Create wallets</button></div>
-        <div class="out" id="o1"></div>
-      </div>
-      <div class="step" id="s2">
-        <div class="n"><svg><use href="#i-cube"/></svg></div>
-        <div><h3>Mine 5 blocks</h3><div class="hint">50 test MEME per block go to your hot wallet.</div></div>
-        <div class="ctl"><span class="mining" id="m2"></span><button class="button" id="b-mine" type="button" disabled>Mine 5 blocks</button></div>
-        <div class="out" id="o2"></div>
-      </div>
-      <div class="step" id="s3">
-        <div class="n"><svg><use href="#i-img"/></svg></div>
-        <div>
-          <h3>Inscribe a meme</h3><div class="hint">The image's SHA-256 goes on-chain. Fee 1 MEME.</div>
-          <div class="picker" id="picker" role="radiogroup" aria-label="Choose a meme" style="margin-top:10px">
-            <label class="pick"><input type="radio" name="img" value="img/pepe.jpg" checked><img src="img/pepe.jpg" alt="Pepe"></label>
-            <label class="pick"><input type="radio" name="img" value="img/apu.jpg"><img src="img/apu.jpg" alt="Apu"></label>
-            <label class="pick"><input type="radio" name="img" value="img/doge.jpg"><img src="img/doge.jpg" alt="Doge"></label>
-            <label class="pick"><input type="radio" name="img" value="img/chad.jpg"><img src="img/chad.jpg" alt="Chad"></label>
-            <label class="pick"><input type="radio" name="img" value="img/gigachad.jpg"><img src="img/gigachad.jpg" alt="GigaChad"></label>
-            <label class="pick"><input type="radio" name="img" value="img/wojak.png"><img src="img/wojak.png" alt="Wojak"></label>
-            <label class="pick" title="Your own image (jpg, png, gif, webp, max 250 KB)"><input type="radio" name="img" value="upload"><span class="up"><svg><use href="#i-up"/></svg><input type="file" id="file" aria-label="Upload your own image" accept="image/jpeg,image/png,image/gif,image/webp"></span></label>
-          </div>
+    <div class="chainview">
+      <div class="chainbar">
+        <div class="seg" role="tablist" aria-label="Which chain to show">
+          <button type="button" role="tab" id="v-testnet" aria-selected="true" data-view="testnet">Public testnet</button>
+          <button type="button" role="tab" id="v-local" aria-selected="false" data-view="local">Your browser chain</button>
         </div>
-        <div class="ctl"><input class="txt" id="caption" type="text" maxlength="140" value="feels good man" aria-label="Caption"><span class="mining" id="m3"></span><button class="button" id="b-inscribe" type="button" disabled>Inscribe and mine</button></div>
-        <div class="out" id="o3"></div>
+        <p class="chainnote" id="chainnote"></p>
       </div>
-      <div class="step" id="s4">
-        <div class="n"><svg><use href="#i-tag"/></svg></div>
-        <div><h3>Put it up for sale</h3><div class="hint">A signed listing with your price, in test MEME.</div></div>
-        <div class="ctl"><input class="num" id="price" type="number" min="1" step="1" value="25" aria-label="Price in MEME"><span class="mining" id="m4"></span><button class="button" id="b-sell" type="button" disabled>List for sale</button></div>
-        <div class="out" id="o4"></div>
-      </div>
-      <div class="step" id="s5">
-        <div class="n"><svg><use href="#i-cart"/></svg></div>
-        <div><h3>Test buyer buys it</h3><div class="hint">The buyer mines for MEME if needed, pays you, and owns the meme.</div></div>
-        <div class="ctl"><span class="mining" id="m5"></span><button class="button green" id="b-buy" type="button" disabled>Buy as test buyer</button></div>
-        <div class="out" id="o5"></div>
-      </div>
-      <div class="step" id="s6">
-        <div class="n"><svg><use href="#i-lock"/></svg></div>
-        <div><h3>Move 75% to the cold vault</h3><div class="hint">Hot keeps a float, cold holds the rest. Later top the hot wallet up again.</div></div>
-        <div class="ctl"><span class="mining" id="m6"></span><button class="button ghost" id="b-topup" type="button" disabled>Top up hot +50</button><button class="button" id="b-cold" type="button" disabled>Move 75% to cold</button></div>
-        <div class="out" id="o6"></div>
-      </div>
-      <div class="step" id="s7">
-        <div class="n"><svg><use href="#i-shield"/></svg></div>
-        <div><h3>Verify everything</h3><div class="hint">Replays the chain from genesis and checks every hash, signature and balance.</div></div>
-        <div class="ctl"><button class="button ghost" id="b-export" type="button" disabled>Export chain.json</button><button class="button" id="b-verify" type="button" disabled>Verify</button></div>
-        <div class="out" id="o7"></div>
-      </div>
+      <div class="strip" id="strip" aria-label="Latest blocks"></div>
+      <dl class="stats" id="stats"></dl>
     </div>
   </section>
 
-  <section id="market">
-    <div class="sec-head"><h2>Market</h2><p>Every meme on your chain, who owns it and whether it is for sale. Buying and selling are on-chain transactions.</p></div>
+  <section id="market" class="wrap sec">
+    <div class="sec-head">
+      <div><h2>Memes on the chain</h2><p id="market-sub">Every inscribed meme, its owner and its price.</p></div>
+      <div class="filters" role="group" aria-label="Filter memes">
+        <button type="button" class="chip on" data-filter="all">All</button>
+        <button type="button" class="chip" data-filter="sale">For sale</button>
+        <button type="button" class="chip" data-filter="sold">Changed hands</button>
+      </div>
+    </div>
     <div class="market" id="market-grid"></div>
   </section>
 
-  <section id="explorer">
-    <div class="sec-head"><h2>Explorer</h2><p>Your browser chain. Select a block to see it as stored.</p></div>
-    <div class="tablewrap"><table id="blocks">
-      <thead><tr><th>Block</th><th>Hash</th><th>Mined</th><th>Txs</th><th>Difficulty</th><th>Nonce</th><th>Reward</th><th>Miner</th></tr></thead>
-      <tbody></tbody></table></div>
-    <div id="block-detail" class="detail" hidden></div>
-    <div id="tx-detail"></div>
-  </section>
+  <section id="mine" class="wrap sec">
+    <div class="sec-head"><div><h2>Try it in your browser</h2><p>Seven steps on your own chain. Every click signs real secp256k1 transactions and mines a real block. MEME here is a test token with no value.</p></div>
+      <button class="btn ghost sm" id="reset" type="button">Reset my chain</button></div>
+    <div class="mine-grid">
+      <ol class="steps" id="steps">
+        <li class="step" id="s1">
+          <div class="step-head"><span class="num">1</span><div><h3>Create wallets</h3><p class="hint">Three key pairs, kept in this browser. Hot signs and spends, cold only receives, the test buyer is your counterparty.</p></div>
+            <div class="ctl"><button class="btn primary" id="b-wallets" type="button">Create wallets</button></div></div>
+          <div class="out" id="o1"></div>
+        </li>
+        <li class="step" id="s2">
+          <div class="step-head"><span class="num">2</span><div><h3>Mine 5 blocks</h3><p class="hint">Each block pays 50 MEME to your hot wallet.</p></div>
+            <div class="ctl"><span class="mining" id="m2"></span><button class="btn primary" id="b-mine" type="button" disabled>Mine 5 blocks</button></div></div>
+          <div class="out" id="o2"></div>
+        </li>
+        <li class="step" id="s3">
+          <div class="step-head"><span class="num">3</span><div><h3>Inscribe a meme</h3><p class="hint">The image's SHA-256 goes into a transaction. Fee 1 MEME. Each picture can be inscribed once.</p></div></div>
+          <div class="picker" id="picker" role="radiogroup" aria-label="Choose a meme">
+            <label class="pick"><input type="radio" name="img" value="img/pepe.jpg" checked><img src="img/pepe.jpg" alt="Pepe"></label>
+            <label class="pick"><input type="radio" name="img" value="img/apu.jpg"><img src="img/apu.jpg" alt="Apu"></label>
+            <label class="pick"><input type="radio" name="img" value="img/doge.jpg"><img src="img/doge.jpg" alt="Doge"></label>
+            <label class="pick"><input type="radio" name="img" value="img/chad.jpg"><img src="img/chad.jpg" alt="Yes Chad"></label>
+            <label class="pick"><input type="radio" name="img" value="img/gigachad.jpg"><img src="img/gigachad.jpg" alt="GigaChad"></label>
+            <label class="pick"><input type="radio" name="img" value="img/wojak.png"><img src="img/wojak.png" alt="Wojak"></label>
+            <label class="pick up" title="Your own image: jpg, png, gif or webp, up to 250 KB"><input type="radio" name="img" value="upload"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-6 6 6-6 6 6M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Upload</span><input type="file" id="file" aria-label="Upload your own image" accept="image/jpeg,image/png,image/gif,image/webp"></label>
+          </div>
+          <div class="ctl row"><input class="txt" id="caption" type="text" maxlength="140" value="feels good man" aria-label="Caption"><span class="mining" id="m3"></span><button class="btn primary" id="b-inscribe" type="button" disabled>Inscribe and mine</button></div>
+          <div class="out" id="o3"></div>
+        </li>
+        <li class="step" id="s4">
+          <div class="step-head"><span class="num">4</span><div><h3>Put it up for sale</h3><p class="hint">A signed listing with your price.</p></div>
+            <div class="ctl"><label class="price-in"><input class="num-in" id="price" type="number" min="1" step="1" value="25" aria-label="Price in MEME"><span>MEME</span></label><span class="mining" id="m4"></span><button class="btn primary" id="b-sell" type="button" disabled>List for sale</button></div></div>
+          <div class="out" id="o4"></div>
+        </li>
+        <li class="step" id="s5">
+          <div class="step-head"><span class="num">5</span><div><h3>Let the test buyer buy it</h3><p class="hint">The buyer mines for MEME if needed, pays you and becomes the owner.</p></div>
+            <div class="ctl"><span class="mining" id="m5"></span><button class="btn buy" id="b-buy" type="button" disabled>Buy as test buyer</button></div></div>
+          <div class="out" id="o5"></div>
+        </li>
+        <li class="step" id="s6">
+          <div class="step-head"><span class="num">6</span><div><h3>Move 75% to the cold vault</h3><p class="hint">Hot keeps a small float, cold holds the rest. Top the hot wallet up when it runs low.</p></div>
+            <div class="ctl"><span class="mining" id="m6"></span><button class="btn" id="b-topup" type="button" disabled>Top up hot +50</button><button class="btn primary" id="b-cold" type="button" disabled>Move 75% to cold</button></div></div>
+          <div class="out" id="o6"></div>
+        </li>
+        <li class="step" id="s7">
+          <div class="step-head"><span class="num">7</span><div><h3>Verify everything</h3><p class="hint">Replays your chain from genesis and checks every hash, signature and balance.</p></div>
+            <div class="ctl"><button class="btn" id="b-export" type="button" disabled>Export chain.json</button><button class="btn primary" id="b-verify" type="button" disabled>Verify</button></div></div>
+          <div class="out" id="o7"></div>
+        </li>
+      </ol>
 
-  <section id="testnet">
-    <div class="sec-head"><h2>Testnet snapshot</h2><p>The same rules run as an independent chain in <a href="https://github.com/larajeftic/memechain/blob/main/node.py">node.py</a>. This is the last export a node pushed here. It is not live.</p></div>
-    <div id="testnet-out"><p class="empty">Loading the snapshot.</p></div>
-  </section>
-
-  <section id="how">
-    <div class="sec-head"><h2>What is real here</h2></div>
-    <div class="facts">
-      <div class="fact"><h3>Real</h3><p>secp256k1 keys and signatures, double-SHA-256 proof of work, merkle roots, balances, ownership and listings. All computed in your browser by <a href="chain.js">chain.js</a>, and re-checkable with the Python node.</p></div>
-      <div class="fact"><h3>Test only</h3><p>MEME has no value and is not for sale for real money. The buyer is a second key in your browser. The chain is yours alone and disappears on reset.</p></div>
-      <div class="fact"><h3>The testnet</h3><p><code>node.py</code> mines with a 60 s block time, syncs with peers over HTTP and anchors every 10th block into Bitcoin via OpenTimestamps. It runs only while someone runs it. GitHub Pages hosts static files.</p></div>
+      <aside class="wallets" id="wallets" aria-label="Your wallets">
+        <div class="wl-head"><span>Your chain</span><b>block <span id="cb-height">0</span></b><span class="busy" id="pill-mining" hidden>mining</span></div>
+        <div class="wallet hot"><img src="img/characters/pepe-thumbs.png" alt=""><div><h3>Hot wallet</h3><p class="amt"><span id="w-hot">0</span> <small>MEME</small></p><p class="addr" id="a-hot">no key yet</p></div></div>
+        <div class="wallet cold"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg><div><h3>Cold vault</h3><p class="amt"><span id="w-cold">0</span> <small>MEME</small></p><p class="addr" id="a-cold">no key yet</p></div></div>
+        <div class="wallet buyer"><img src="img/characters/doge.png" alt=""><div><h3>Test buyer</h3><p class="amt"><span id="w-buyer">0</span> <small>MEME</small></p><p class="addr" id="a-buyer">no key yet</p></div></div>
+        <p class="wl-note">Stored in this browser only. Nobody else sees this chain.</p>
+      </aside>
     </div>
+  </section>
+
+  <section id="explorer" class="wrap sec">
+    <div class="sec-head"><div><h2>Explorer</h2><p id="explorer-sub">Select a block to see its header, its hash and the block as stored.</p></div></div>
+    <div class="tablewrap"><table id="blocks">
+      <thead><tr><th>Block</th><th>Hash</th><th>Mined</th><th>Transactions</th><th>Difficulty</th><th>Nonce</th><th>Reward</th><th>Miner</th></tr></thead>
+      <tbody></tbody></table></div>
+    <button class="btn ghost sm more" id="more-blocks" type="button" hidden>Show more blocks</button>
+    <div id="block-detail" class="detail" hidden></div>
+  </section>
+
+  <section id="node" class="wrap sec">
+    <div class="sec-head"><div><h2>How the chain works</h2><p>Two programs share one set of rules: <a href="https://github.com/larajeftic/memechain/blob/main/node.py">node.py</a> runs the testnet, <a href="chain.js">chain.js</a> runs the same rules in your browser.</p></div></div>
+    <div class="how">
+      <div class="how-item"><h3>Proof of work</h3><p>Double SHA-256 over the block header, like Bitcoin. Difficulty retargets every 10 blocks toward one block a minute. 50 MEME per block, halving every 100,000 blocks.</p></div>
+      <div class="how-item"><h3>Memes by hash</h3><p>A meme transaction commits the picture's SHA-256, size and caption. The first inscription wins, ownership moves with signed sell and buy transactions.</p></div>
+      <div class="how-item"><h3>Anchored in Bitcoin</h3><p>Every 10th testnet block hash is stamped with OpenTimestamps, so a rewrite of older blocks is detectable against Bitcoin.</p></div>
+      <div class="how-item"><h3>Testnet bot</h3><p>A <a href="https://github.com/larajeftic/memechain/blob/main/.github/workflows/testnet.yml">GitHub Actions job</a> mines a few blocks every 20 minutes and inscribes memes from a <a href="https://github.com/larajeftic/memechain/tree/main/testnet/pool">public pool</a>. Add yours with a pull request.</p></div>
+    </div>
+    <div class="code">
+      <div class="code-head"><span>Run your own node</span><button class="btn ghost sm" type="button" id="copy-run">Copy</button></div>
+<pre id="run-cmd">git clone https://github.com/larajeftic/memechain
+cd memechain
+pip install flask requests ecdsa pillow opentimestamps-client
+python node.py            # explorer and API on http://localhost:5050</pre>
+    </div>
+    <p class="honest">MEME is a test token. It has no value, is not sold and cannot be bought with money. The browser chain is a demonstration, not a network: every visitor builds their own, and the buyer is a second key in the same browser. The testnet is a small CPU-mined chain that only grows while the bot or a node runs it.</p>
   </section>
 </main>
 
-<footer>
-  <p>Memes: Pepe and Apu (Matt Furie's character and its anonymous derivative), Doge (photo by Atsuko Sato), Yes Chad (anonymous), GigaChad (Commons, CC BY-SA 3.0), Wojak (Commons, public domain). Small non-commercial demo copies, removed on request. Details: <a href="img/ATTRIBUTION.md">ATTRIBUTION.md</a>.</p>
-  <p>Cryptography by <a href="https://github.com/paulmillr/noble-secp256k1" rel="noopener">noble-secp256k1</a> and <a href="https://github.com/paulmillr/noble-hashes" rel="noopener">noble-hashes</a> (MIT). memechain is MIT licensed. Source: <a href="https://github.com/larajeftic/memechain" rel="noopener">github.com/larajeftic/memechain</a>.</p>
+<footer class="wrap foot">
+  <div class="foot-brand"><img src="img/characters/pepe-sit.png" alt=""><p><b>memechain</b> is MIT licensed. Source on <a href="https://github.com/larajeftic/memechain" rel="noopener">GitHub</a>.</p></div>
+  <p>Memes: Pepe and Apu (Matt Furie's character and its anonymous derivative), Doge (photo by Atsuko Sato), Yes Chad (anonymous), GigaChad (Commons, CC BY-SA 3.0), Wojak (Commons, public domain). Small non-commercial demo copies, removed on request. Details in <a href="img/ATTRIBUTION.md">ATTRIBUTION.md</a>. Cryptography by <a href="https://github.com/paulmillr/noble-secp256k1" rel="noopener">noble-secp256k1</a> and <a href="https://github.com/paulmillr/noble-hashes" rel="noopener">noble-hashes</a> (MIT).</p>
 </footer>
 <script type="module" src="app.js"></script>
 </body>

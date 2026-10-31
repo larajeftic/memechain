@@ -12,3 +12,13 @@ The bundled meme characters are the well-known originals, downscaled to at most 
 | `wojak.png` | Wojak (Feels Guy) | [Wikimedia Commons: File:Wojak (meme) simplified & vectorized.svg](https://commons.wikimedia.org/wiki/File:Wojak_(meme)_simplified_%26_vectorized.svg), rendered to PNG | Public domain (as tagged on Commons). |
 
 This is a non-commercial test project with valueless test tokens. If you hold rights to one of these images and want it removed, open an issue in the repository and it will be taken down.
+
+## Characters (`characters/`)
+
+`doge.png`, `pepe-peek.png`, `pepe-sit.png` and `pepe-thumbs.png` are transparent cut-outs from the Memegle logo artwork
+(cut with Memegle's `tools/cut_characters.py`), showing Doge and Pepe. Same rights notes as above: Pepe by Matt Furie,
+Doge after the photo of Kabosu by Atsuko Sato. Decorative, non-commercial, removed on request.
+
+## Testnet pool
+
+Images the testnet bot inscribes live in `testnet/pool/` in the repository; their sources are listed in `testnet/README.md`.

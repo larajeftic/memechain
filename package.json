@@ -1,6 +1,6 @@
 {
   "name": "memechain",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "A proof-of-work blockchain for memes: Python testnet node plus a browser-local demo chain on GitHub Pages.",
   "type": "module",
