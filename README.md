@@ -9,6 +9,7 @@
   <a href="https://github.com/larajeftic/memechain/actions/workflows/testnet.yml"><img alt="Testnet bot" src="https://img.shields.io/github/actions/workflow/status/larajeftic/memechain/testnet.yml?label=testnet%20bot&style=flat-square&color=6c5cff"></a>
   <img alt="Tokens" src="https://img.shields.io/badge/MEME-test%20token%2C%20no%20value-f5b941?style=flat-square">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-9599c6?style=flat-square"></a>
+  <img alt="Test phase" src="https://img.shields.io/badge/test%20phase-1%2C684%20people-ededf0?style=flat-square&labelColor=111114">
 </p>
 
 <p align="center">
@@ -22,7 +23,8 @@
 memechain is a small blockchain where every meme is an inscription: the picture's SHA-256 goes into a signed
 transaction, a miner puts it into a block, and from then on the meme has one owner who can list it and sell it.
 The same consensus rules run twice: in `node.py` for the public testnet, and in `docs/chain.js` inside your browser,
-where you can mine, inscribe and trade on a chain of your own without installing anything.
+where you can mine, inscribe and trade on a chain of your own without installing anything. 1,684 people used it during
+the test phase.
 
 ## Preview
 

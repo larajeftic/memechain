@@ -16,3 +16,6 @@ _backups/
 *.bak_*
 # test artefacts
 tests/_browser_chain.json
+
+MainGithub.txt
+Main*.txt
