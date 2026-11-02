@@ -109,10 +109,12 @@ docs/                        the website (GitHub Pages, branch main, folder /doc
   app.js                     testnet view, browser miner, market, explorer
   chain.js                   consensus rules ported from node.py (noble-secp256k1 + noble-hashes in vendor/)
   img/                       bundled memes and the Pepe/Doge characters, see img/ATTRIBUTION.md
+  logo.html, logo.png        the mark: the block with the characters, rendered to logo.png, icons and favicons
   readme/                    banner source and the screenshots in this README
 testnet/pool/                images the testnet bot inscribes, with captions.json
 tools/testnet_bot.py         one bot run: load + re-validate, mine, inscribe, anchor, export
-tools/readme_assets.py       renders banner, social preview, icon and screenshots
+tools/logo_assets.py         renders docs/logo.html into logo.png, icon-512/192, apple-touch icon and favicons
+tools/readme_assets.py       renders banner, social preview and screenshots (runs logo_assets.py first)
 tools/validate_export.py     validates any exported chain with node.py's code
 tests/                       JS-to-Python cross validation, unit tests, Playwright walkthrough
 ```

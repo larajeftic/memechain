@@ -3,15 +3,19 @@
     python tools/serve.py 8080          # in another terminal
     python tools/readme_assets.py [http://127.0.0.1:8080/]
 
-Writes docs/readme/banner.png, docs/og.png, docs/icon-192.png and docs/readme/{hero,market,mine,explorer,mobile}.png.
+Writes docs/readme/banner.png, docs/og.png and docs/readme/{hero,market,mine,explorer,mobile}.png.
+The mark itself (docs/logo.png, icons, favicons) comes from tools/logo_assets.py, which runs first.
+    python tools/readme_assets.py --quick   # banner + social preview only (no mining)
 Uses Playwright with the installed Chrome. The screenshots show whatever the testnet branch holds at that moment.
 """
-import sys
+import subprocess, sys
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-URL = (sys.argv[1] if len(sys.argv) > 1 else "http://127.0.0.1:8080/").rstrip("/") + "/"
+QUICK = "--quick" in sys.argv; args = [a for a in sys.argv[1:] if a != "--quick"]
+URL = (args[0] if args else "http://127.0.0.1:8080/").rstrip("/") + "/"
+subprocess.run([sys.executable, str(ROOT / "tools" / "logo_assets.py")], check=True)
 OUT = ROOT / "docs" / "readme"; OUT.mkdir(parents=True, exist_ok=True)
 
 def ready(page):
@@ -24,10 +28,8 @@ with sync_playwright() as p:
     pg = browser.new_page(viewport={"width": 1280, "height": 640})
     pg.goto(URL + "readme/banner.html", wait_until="networkidle"); ready(pg)
     pg.screenshot(path=str(OUT / "banner.png")); pg.screenshot(path=str(ROOT / "docs" / "og.png"))
-    pg.set_viewport_size({"width": 192, "height": 192})
-    pg.set_content(f"<body style='margin:0'><img src='{URL}icon.svg' width=192 height=192>"); pg.wait_for_timeout(300)
-    pg.screenshot(path=str(ROOT / "docs" / "icon-192.png"), omit_background=True)
     pg.close()
+    if QUICK: browser.close(); print("banner + og written to", OUT); sys.exit(0)
 
     pg = browser.new_page(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
     pg.goto(URL, wait_until="networkidle"); ready(pg)

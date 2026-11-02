@@ -35,7 +35,7 @@ code, pre, .mono { font-family: var(--mono); }
 .top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--night) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .top-in { display: flex; align-items: center; gap: 24px; height: 60px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand .logo { width: 30px; height: 30px; }
+.brand .logo { width: 48px; height: 48px; display: block; }
 .brand span { font: 26px/1 var(--display); letter-spacing: .01em; }
 .top nav { display: flex; gap: 4px; margin-right: auto; }
 .top nav a { text-decoration: none; color: var(--muted); padding: 6px 12px; border-radius: 8px; font-weight: 500; }
@@ -288,6 +288,8 @@ td .ty { color: var(--muted); }
   .top nav { display: none; }
   .netpill { margin-left: auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; padding: 6px 10px; }
   .netpill span { overflow: hidden; text-overflow: ellipsis; }
+  .brand { gap: 6px; }
+  .brand .logo { width: 40px; height: 40px; }
   .brand span { font-size: 22px; }
   .gh span { display: none; }
   .gh { padding: 8px; }

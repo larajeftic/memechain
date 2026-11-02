@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>memechain logo</title>
+<style>
+  /* Source of docs/logo.png, icon-*.png and favicon-*.png: python tools/logo_assets.py
+     Memegle-style mark: the memechain block in pepe green / doge gold / violet with the Memegle characters around it. */
+  html, body { margin: 0; width: 1024px; height: 1024px; overflow: hidden; background: transparent; }
+  body.bg { background: #0f1020; }
+  body.bg::before { content: ""; position: absolute; inset: 0; background: radial-gradient(520px 420px at 50% 42%, #22245a 0%, #0f1020 72%); }
+  .stage { position: absolute; inset: 0; }
+  .block { position: absolute; left: 172px; top: 182px; width: 680px; height: 680px; z-index: 2; }
+  .ch { position: absolute; }
+  .doge  { width: 292px; left: 442px; top: 36px;  z-index: 1; transform: rotate(-6deg); }
+  .peek  { width: 156px; left: 112px; top: 402px; z-index: 1; }
+  .thumb { width: 372px; left: 622px; top: 300px; z-index: 3; clip-path: inset(0 0 0 7.5%); }
+  .sit   { width: 236px; left: 606px; top: 636px; z-index: 4; transform: rotate(4deg); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <img class="ch doge" src="img/characters/doge.png" alt="">
+  <img class="ch peek" src="img/characters/pepe-peek.png" alt="">
+  <svg class="block" viewBox="0 0 100 100" aria-hidden="true">
+    <defs>
+      <linearGradient id="gTop" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b6ff7a"/><stop offset=".55" stop-color="#79d85e"/><stop offset="1" stop-color="#3fae45"/>
+      </linearGradient>
+      <linearGradient id="gLeft" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffd84a"/><stop offset=".6" stop-color="#f5b941"/><stop offset="1" stop-color="#ff7a3d"/>
+      </linearGradient>
+      <linearGradient id="gRight" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7ea0ff"/><stop offset=".55" stop-color="#6c5cff"/><stop offset="1" stop-color="#8a3dff"/>
+      </linearGradient>
+      <linearGradient id="gShine" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M50 8 92 31 50 54 8 31Z" fill="url(#gTop)"/>
+    <path d="M8 31 50 54v42L8 73Z" fill="url(#gLeft)"/>
+    <path d="M92 31 50 54v42l42-23Z" fill="url(#gRight)"/>
+    <path d="M50 8 92 31 50 54 8 31Z" fill="url(#gShine)"/>
+    <path d="M8 31 50 54 92 31" fill="none" stroke="#0f1020" stroke-opacity=".28" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M50 54v42" stroke="#0f1020" stroke-opacity=".28" stroke-width="1.2"/>
+    <path d="M50 8 92 31v42L50 96 8 73V31Z" fill="none" stroke="#0f1020" stroke-opacity=".55" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>
+  <img class="ch thumb" src="img/characters/pepe-thumbs.png" alt="">
+  <img class="ch sit" src="img/characters/pepe-sit.png" alt="">
+</div>
+</body>
+</html>
