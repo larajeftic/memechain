@@ -36,9 +36,9 @@ def fit(src, size, pad):   # scale the 1024 canvas into size, with pad px of air
     out = Image.new("RGBA", (size, size), (0, 0, 0, 0)); out.paste(im, (pad, pad), im); return out
 
 for size in (512, 192):
-    canvas = Image.new("RGBA", (size, size), (15, 16, 32, 255)); art = fit(mark, size, round(size * 0.04))
+    canvas = Image.new("RGBA", (size, size), (10, 10, 12, 255)); art = fit(mark, size, round(size * 0.04))
     canvas.alpha_composite(art); rounded(canvas, round(size * 0.22)).save(DOCS / f"icon-{size}.png")
-apple = Image.new("RGBA", (180, 180), (15, 16, 32, 255)); apple.alpha_composite(fit(mark, 180, 6)); apple.save(ICONS / "apple-touch-icon.png")
+apple = Image.new("RGBA", (180, 180), (10, 10, 12, 255)); apple.alpha_composite(fit(mark, 180, 6)); apple.save(ICONS / "apple-touch-icon.png")
 for size in (64, 32):
     fit(mark, size, 0).save(ICONS / f"favicon-{size}.png")
 fit(mark, 160, 0).save(DOCS / "logo-160.png")   # transparent, for the page header
